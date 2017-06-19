@@ -1,19 +1,31 @@
-## Regex Function Collection  
-  
+## Regex Function Collection
+
 ### Some useful functions to deal with Regular Expressions
 
-Just: `include <rfc.hpp>`  
-  
-#### short-doc:
+Just: `include <rfc.hpp>`
 
+### Examples:
+
+#### regex_is_valid:
 ```C++
-/***********************************************************************/
-/*                                                                     */
-/*                            valid family                             */
-/*                                                                     */
-/***********************************************************************/
+int main(){
 
-bool        regex_is_valid( const std::string& user_pattern );
+    const char* r = regex_is_valid( "/\/\/\\" ); // regex_is_valid (2)
+    if( r ){
+        std::cout << "not valid regex\n";
+        std::cout << "because: " << r << '\n';
+    } else {
+        std::cout << "okay\n";
+    }
 
-const char* regex_is_valid( const char* user_pattern );
+return 0;
+}
+
+/* the output:
+not valid regex
+because: Unexpected end of regex when escaping.
+
+Process returned 0 (0x0)   execution time : 0.008 s
+Press ENTER to continue.
+*/
 ```
