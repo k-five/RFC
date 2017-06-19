@@ -1,6 +1,13 @@
 ## Regex Function Collection
 
-### Some useful functions to deal with Regular Expressions
+### Some useful functions to deal with Regular Expressions; All written by standard library.
+```C++
+#include <regex>
+#include <string>
+#include <vector>
+#include <iterator>
+#include <algorithm>
+```
 
 Just: `include <rfc.hpp>`
 
