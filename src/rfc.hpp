@@ -50,6 +50,18 @@ bool        regex_is_valid( const std::string& user_pattern );
 
 const char* regex_is_valid( const char* user_pattern );
 
+
+/***********************************************************************/
+/*                                                                     */
+/*                            parse family                             */
+/*                                                                     */
+/***********************************************************************/
+
+std::string parse( const char** argv, const char* glue = " " );
+
+void parse_to( const char** argv, std::string& user_string, const char* glue = " " );
+
+
 } // end of namespace k5
 
 #endif // REGEX_FUNCTION_COLLECTION_HPP

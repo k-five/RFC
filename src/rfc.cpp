@@ -61,4 +61,31 @@ const char* regex_is_valid( const char* user_pattern ){
     return result;
 }
 
+/***********************************************************************/
+/*                                                                     */
+/*                            parse family                             */
+/*                                                                     */
+/***********************************************************************/
+
+std::string parse( const char** argv, const char* glue = " " ){
+
+    std::string result;
+    while( *argv ){
+        result += *argv;
+        result += glue;
+        argv++;
+    }
+
+    return result;
+}
+
+void parse_to( const char** argv, std::string& user_string, const char* glue = " " ){
+
+    while( *argv ){
+        user_string += *argv;
+        user_string += glue;
+        argv++;
+    }
+}
+
 } // end of namespace k5
