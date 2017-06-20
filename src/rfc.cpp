@@ -533,5 +533,62 @@ void split_to( const std::string& user_string, Container& object, const std::str
     std::copy( first, last, std::back_insert_iterator< Container >( object ) );
 }
 
+/***********************************************************************/
+/*                                                                     */
+/*                            join family                              */
+/*                                                                     */
+/***********************************************************************/
+
+
+template< typename Container >
+std::string join( Container con, const std::string& glue = " " ){
+
+    std::ostringstream oss;
+    for( const auto& item : con ){
+        oss << item << glue;
+    }
+
+    //return oss.str();
+    return oss.str().substr( 0, oss.str().size() - glue.size() );
+}
+
+template< typename Container >
+void join_to( Container con, std::string& user_string, const std::string& glue = " " ){
+
+    std::ostringstream oss;
+    for( const auto& item : con ){
+        oss << item << glue;
+    }
+
+    user_string = oss.str().substr( 0, oss.str().size() - glue.size() );
+}
+
+template< typename Container >
+std::string join( Container first, Container last,const std::string& glue = " " ){
+
+    std::ostringstream oss;
+    while( first != last ){
+        // ( ( first + 1 ) != last ) ? ( oss << *first << glue ) : ( oss << *first );
+        oss << *first << glue;
+        ++first;
+    }
+
+    //return oss.str();
+    return oss.str().substr( 0, oss.str().size() - glue.size() );
+}
+
+template< typename Container >
+void join_to( Container first, Container last, std::string& user_string, const std::string& glue = " " ){
+
+    std::ostringstream oss;
+    while( first != last ){
+        // ( ( first + 1 ) != last ) ? ( oss << *first << glue ) : ( oss << *first );
+        oss << *first << glue;
+        ++first;
+    }
+
+    user_string = oss.str().substr( 0, oss.str().size() - glue.size() );
+}
+
 
 } // end of namespace k5
