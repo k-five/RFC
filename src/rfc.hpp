@@ -27,6 +27,18 @@
         regex_is_valid (1)
         regex_is_valid (2)
 
+    parse family:
+        parse
+        parse_to
+        parse_count
+        parse_index
+        parse_index_to
+        parse_index_all
+        parse_index_all_to
+        parse_option
+        parse_option_to
+        parse_option_all
+        parse_option_all_to
 */
 
 #ifndef REGEX_FUNCTION_COLLECTION_HPP
@@ -46,7 +58,7 @@ namespace k5 {
 /*                                                                     */
 /***********************************************************************/
 
-bool        regex_is_valid( const std::string& user_pattern );
+bool regex_is_valid( const std::string& user_pattern );
 
 const char* regex_is_valid( const char* user_pattern );
 
@@ -60,6 +72,47 @@ const char* regex_is_valid( const char* user_pattern );
 std::string parse( const char** argv, const char* glue = " " );
 
 void parse_to( const char** argv, std::string& user_string, const char* glue = " " );
+
+std::ptrdiff_t parse_count( const char** argv );
+
+std::vector< std::string > parse_all( const char** argv, const char* glue = " "  );
+
+void parse_all_to( const char** argv, std::vector< std::string >& vec_str, const char* glue = " "  );
+
+template< typename Container >
+Container parse_all( const char** argv, const char* glue = " "  );
+
+template< typename Container >
+void parse_all_to( const char** argv, Container& object, const char* glue = " "  );
+
+std::string parse_index( const char** argv, int position );
+
+void parse_index_to( const char** argv, std::string& user_string, int position );
+
+std::vector< std::string > parse_index_all( const char** argv, int position );
+
+template< typename Container >
+Container parse_index_all( const char** argv, int position );
+
+void parse_index_all_to( const char** argv, std::vector< std::string >& vec_str, int position );
+
+template< typename Container >
+void parse_index_all_to( const char** argv, Container& object, int position );
+
+std::string parse_option( const char** argv, const std::string& argument );
+
+void parse_option_to( const char** argv, std::string& user_string, const std::string& argument );
+
+std::vector< std::string > parse_option_all( const char** argv, const std::string& argument );
+
+template< typename Container >
+Container parse_option_all( const char** argv, const std::string& argument );
+
+void parse_option_all_to( const char** argv, std::vector< std::string >& vec_str, const std::string& argument );
+
+template< typename Container >
+void parse_option_all_to( const char** argv, Container& object, const std::string& argument );
+
 
 
 } // end of namespace k5
