@@ -590,5 +590,128 @@ void join_to( Container first, Container last, std::string& user_string, const s
     user_string = oss.str().substr( 0, oss.str().size() - glue.size() );
 }
 
+/***********************************************************************/
+/*                                                                     */
+/*                       substitute family                             */
+/*                                                                     */
+/***********************************************************************/
+
+std::string substitute( const std::string& user_string, const std::string user_pattern, const std::string& substitution, const std::string& flags = "o" ){
+
+    bool flags_has_i = flags.find( "i" ) < flags.size();
+    bool flags_has_g = flags.find( "g" ) < flags.size();
+
+    std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
+    std::regex_constants::match_flag_type search_flag = flags_has_g ? std::regex_constants::match_default : std::regex_constants::format_first_only;
+
+    std::regex rx( user_pattern, regex_flag );
+
+    return std::regex_replace( user_string, rx, substitution, search_flag );
+}
+
+void substitute_to( const std::string& user_string, std::string& new_user_string, const std::string user_pattern, const std::string& substitution, const std::string& flags = "o" ){
+
+    bool flags_has_i = flags.find( "i" ) < flags.size();
+    bool flags_has_g = flags.find( "g" ) < flags.size();
+
+    std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
+    std::regex_constants::match_flag_type search_flag = flags_has_g ? std::regex_constants::match_default : std::regex_constants::format_first_only;
+
+    std::regex rx( user_pattern, regex_flag );
+
+    new_user_string = std::regex_replace( user_string, rx, substitution, search_flag );
+}
+
+
+std::string substitute_at_index( const std::string& user_string, const std::string& user_pattern, const std::string& substitution, int position ){
+
+    const std::regex rx( user_pattern );
+    std::match_results< std::string::const_iterator > mr;
+
+
+    if( position < 0 ){
+        std::string temp = user_string;
+        unsigned int counter = 0;
+
+        while( std::regex_search( temp, mr, rx ) ){
+            temp = mr.suffix().str();
+            ++counter;
+        }
+        position = counter + position;
+    }
+
+    std::string temp = user_string;
+    std::string new_string;
+
+    while( std::regex_search( temp, mr, rx ) ){
+        if( !position-- ){
+            new_string += std::regex_replace( temp, rx, substitution, std::regex_constants::format_first_only );
+            break;
+        }
+
+        new_string += mr.prefix().str() + mr.str();
+        temp = mr.suffix().str();
+    }
+
+    if( mr.str() != "" )    return new_string;
+    else                    return user_string;
+}
+
+void substitute_at_index_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, const std::string& substitution, int position ){
+
+    const std::regex rx( user_pattern );
+    std::match_results< std::string::const_iterator > mr;
+
+
+    if( position < 0 ){
+        std::string temp = user_string;
+        unsigned int counter = 0;
+
+        while( std::regex_search( temp, mr, rx ) ){
+            temp = mr.suffix().str();
+            ++counter;
+        }
+        position = counter + position;
+    }
+
+    std::string temp = user_string;
+    std::string new_string;
+
+    while( std::regex_search( temp, mr, rx ) ){
+        if( !position-- ){
+            new_string += std::regex_replace( temp, rx, substitution, std::regex_constants::format_first_only );
+            break;
+        }
+
+        new_string += mr.prefix().str() + mr.str();
+        temp = mr.suffix().str();
+    }
+
+    if( mr.str() != "" )    new_user_string = new_string;
+    else                    new_user_string = new_string;
+}
+
+
+std::string substitute_all( const std::string& user_string, const std::string user_pattern, const std::string& substitution ){
+
+    std::regex::flag_type regex_flag                  = std::regex_constants::icase;
+    std::regex_constants::match_flag_type search_flag = std::regex_constants::match_default;
+
+    std::regex rx( user_pattern, regex_flag );
+
+    return std::regex_replace( user_string, rx, substitution, search_flag );
+
+}
+
+void substitute_all_to( const std::string& user_string, std::string& new_user_string, const std::string user_pattern, const std::string& substitution ){
+
+    std::regex::flag_type regex_flag                  = std::regex_constants::icase;
+    std::regex_constants::match_flag_type search_flag = std::regex_constants::match_default;
+
+    std::regex rx( user_pattern, regex_flag );
+
+    new_user_string = std::regex_replace( user_string, rx, substitution, search_flag );
+}
+
 
 } // end of namespace k5
