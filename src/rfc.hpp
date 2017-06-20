@@ -113,6 +113,19 @@ void parse_option_all_to( const char** argv, std::vector< std::string >& vec_str
 template< typename Container >
 void parse_option_all_to( const char** argv, Container& object, const std::string& argument );
 
+/***********************************************************************/
+/*                                                                     */
+/*                            split family                             */
+/*                                                                     */
+/***********************************************************************/
+
+std::vector< std::string > split( const std::string& user_string, const std::string& delimiter = "\\s+" );
+
+template< typename Container >
+Container split( const std::string& user_string, const std::string& delimiter = "\\s+" );
+
+template< typename Container >
+void split_to( const std::string& user_string, Container& object, const std::string& delimiter = "\\s+" );
 
 
 } // end of namespace k5
