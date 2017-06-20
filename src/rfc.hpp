@@ -146,7 +146,23 @@ template< typename Container >
 void join_to( Container first, Container last, std::string& user_string, const std::string& glue = " " );
 
 
+/***********************************************************************/
+/*                                                                     */
+/*                       substitute family                             */
+/*                                                                     */
+/***********************************************************************/
 
+std::string substitute( const std::string& user_string, const std::string user_pattern, const std::string& substitution, const std::string& flags = "o" );
+
+void substitute_to( const std::string& user_string, std::string& new_user_string, const std::string user_pattern, const std::string& substitution, const std::string& flags = "o" );
+
+std::string substitute_at_index( const std::string& user_string, const std::string& user_pattern, const std::string& substitution, int position );
+
+void substitute_at_index_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, const std::string& substitution, int position );
+
+std::string substitute_all( const std::string& user_string, const std::string user_pattern, const std::string& substitution );
+
+void substitute_all_to( const std::string& user_string, std::string& new_user_string, const std::string user_pattern, const std::string& substitution );
 
 
 } // end of namespace k5
