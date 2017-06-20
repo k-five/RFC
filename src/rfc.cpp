@@ -500,4 +500,38 @@ void parse_option_all_to( const char** argv, Container& object, const std::strin
 }
 
 
+/***********************************************************************/
+/*                                                                     */
+/*                            split family                             */
+/*                                                                     */
+/***********************************************************************/
+
+std::vector< std::string > split( const std::string& user_string, const std::string& delimiter = "\\s+" ){
+
+    std::regex rx( delimiter );
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx, -1 ), last;
+    //return std::vector< std::string >( first, {} );
+    return std::vector< std::string >( first, last );
+
+}
+
+template< typename Container >
+Container split( const std::string& user_string, const std::string& delimiter = "\\s+" ){
+
+    std::regex rx( delimiter );
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx, -1 ), last;
+    //return Container( first, {} );
+    return Container( first, last );
+
+}
+
+template< typename Container >
+void split_to( const std::string& user_string, Container& object, const std::string& delimiter = "\\s+" ){
+
+    std::regex rx( delimiter );
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx, -1 ), last;
+    std::copy( first, last, std::back_insert_iterator< Container >( object ) );
+}
+
+
 } // end of namespace k5
