@@ -127,6 +127,27 @@ Container split( const std::string& user_string, const std::string& delimiter = 
 template< typename Container >
 void split_to( const std::string& user_string, Container& object, const std::string& delimiter = "\\s+" );
 
+/***********************************************************************/
+/*                                                                     */
+/*                            join family                              */
+/*                                                                     */
+/***********************************************************************/
+
+template< typename Container >
+std::string join( Container con, const std::string& glue = " " );
+
+template< typename Container >
+void join_to( Container con, std::string& user_string, const std::string& glue = " " );
+
+template< typename Container >
+std::string join( Container first, Container last,const std::string& glue = " " );
+
+template< typename Container >
+void join_to( Container first, Container last, std::string& user_string, const std::string& glue = " " );
+
+
+
+
 
 } // end of namespace k5
 
