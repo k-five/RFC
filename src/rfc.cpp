@@ -40,6 +40,31 @@
         parse_option_all
         parse_option_all_to
 
+    split family:
+        split
+        split_to
+
+    join family:
+        join
+        join_to
+
+    substitute family:
+        substitute
+        substitute_to
+        substitute_all
+        substitute_all_to
+        substitute_at_index
+        substitute_at_index_to
+
+    match family:
+        match
+        match_to
+        match_all
+        match_all_to
+        match_at_index
+        match_at_index_to
+        has_match
+
 */
 
 namespace k5 {
