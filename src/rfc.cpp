@@ -713,5 +713,176 @@ void substitute_all_to( const std::string& user_string, std::string& new_user_st
     new_user_string = std::regex_replace( user_string, rx, substitution, search_flag );
 }
 
+/*********************************************************************/
+/*                                                                   */
+/*                            match family                           */
+/*                                                                   */
+/*********************************************************************/
+
+std::vector< std::string > match( std::string user_string, const std::string& user_pattern, const std::string& flags = "o" ){
+
+    const bool flags_has_i = flags.find( "i" ) < flags.size();
+    const bool flags_has_g = flags.find( "g" ) < flags.size();
+
+    std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
+//    std::regex_constants::match_flag_type search_flag = flags_has_g ? std::regex_constants::match_default : std::regex_constants::format_first_only;
+    std::regex rx( user_pattern, regex_flag );
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(),
+                                                                    user_string.end(),
+                                                                    rx ), last;
+
+    if( flags_has_g ){
+        return std::vector< std::string >( first, last );
+    } else {
+        if( std::distance( first, last ) >= 1 ){
+            return std::vector< std::string >( 1, *first );
+        } else {
+            return std::vector< std::string >();
+        }
+    }
+}
+
+template< typename Container >
+void match_to( std::string user_string, std::vector< std::string >& vec_str, const std::string& user_pattern, const std::string& flags = "o" ){
+
+    const bool flags_has_i = flags.find( "i" ) < flags.size();
+    const bool flags_has_g = flags.find( "g" ) < flags.size();
+
+    std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
+    std::regex_constants::match_flag_type search_flag = flags_has_g ? std::regex_constants::match_default : std::regex_constants::format_first_only;
+    std::regex rx( user_pattern, regex_flag );
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(),
+                                                                    user_string.end(),
+                                                                    rx ), last;
+
+    if( flags_has_g ){
+        vec_str.assign( first, last );
+    } else {
+        if( std::distance( first, last ) >= 1 ){
+            vec_str.assign( 1, *first );
+        } else {
+            // nothing
+        }
+    }
+}
+
+template< typename Container >
+void match_to( std::string user_string, Container& object, const std::string& user_pattern, const std::string& flags = "o" ){
+
+    const bool flags_has_i = flags.find( "i" ) < flags.size();
+    const bool flags_has_g = flags.find( "g" ) < flags.size();
+
+    std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
+//    std::regex_constants::match_flag_type search_flag = flags_has_g ? std::regex_constants::match_default : std::regex_constants::format_first_only;
+    std::regex rx( user_pattern, regex_flag );
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(),
+                                                                    user_string.end(),
+                                                                    rx ), last;
+
+    if( flags_has_g ){
+        std::copy( first, last, std::back_insert_iterator< Container >( object ) );
+    } else {
+        if( std::distance( first, last ) >= 1 ){
+            object.push_back( 1, *first );
+        } else {
+            // nothing
+        }
+    }
+}
+
+std::string match_at_index( const std::string& user_string, const std::string& user_pattern, int position ){
+
+    const std::regex rx( user_pattern );
+
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx ), last;
+    const std::ptrdiff_t distance = std::distance( first, last );
+
+    if( position >= distance )      return user_string;
+    if( position + distance < 0 )   return user_string;
+
+    if( position < 0 ){
+        position = position + distance;
+        while( position-- ) first++;
+        //std::advance( first, position );
+        return *first;
+    } else {
+        while( position-- ) first++;
+        //std::advance( first, position );
+        return *first;
+    }
+
+    return user_string;
+}
+
+void match_at_index_to( const std::string& user_string, std::string& user_index, const std::string& user_pattern, int position ){
+
+    const std::regex rx( user_pattern );
+
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx ), last;
+    const std::ptrdiff_t distance = std::distance( first, last );
+
+    if( position >= distance )      user_index = user_string;
+    if( position + distance < 0 )   user_index = user_string;
+
+    if( position < 0 ){
+        position = position + distance;
+        while( position-- ) first++;
+        //std::advance( first, position );
+        user_index = *first;
+    } else {
+        while( position-- ) first++;
+        //std::advance( first, position );
+        user_index = *first;
+    }
+
+    user_index = user_string;
+}
+
+std::vector< std::string > match_all( std::string user_string, const std::string& user_pattern ){
+
+    std::regex::flag_type regex_flag                  = std::regex_constants::icase;
+//    std::regex_constants::match_flag_type search_flag = std::regex_constants::match_default;
+    std::regex rx( user_pattern, regex_flag );
+
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx ), last;
+
+    return std::vector< std::string >( first, last );
+}
+
+void match_all_to( const std::string& user_string, std::vector< std::string >& vec_str, const std::string& user_pattern ){
+
+    std::regex::flag_type regex_flag                  = std::regex_constants::icase;
+//    std::regex_constants::match_flag_type search_flag = std::regex_constants::match_default;
+    std::regex rx( user_pattern, regex_flag );
+
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx ), last;
+
+    vec_str.assign( first, last );
+}
+
+template< typename Container >
+void match_all_to( const std::string& user_string, Container& object, const std::string& user_pattern ){
+
+    std::regex::flag_type regex_flag                  = std::regex_constants::icase;
+//    std::regex_constants::match_flag_type search_flag = std::regex_constants::match_default;
+    std::regex rx( user_pattern, regex_flag );
+
+    std::regex_token_iterator< std::string::const_iterator > first( user_string.begin(), user_string.end(), rx ), last;
+
+    std::copy( object.begin(), object.end(), std::back_insert_iterator< Container >( object ) );
+}
+
+bool has_match( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o"  ){
+
+    const bool flags_has_i = flags.find( "i" ) < flags.size();
+    const bool flags_has_g = flags.find( "g" ) < flags.size();
+    std::vector< std::string > vec_str;
+
+    std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
+//    std::regex_constants::match_flag_type search_flag = flags_has_g ? std::regex_constants::match_default : std::regex_constants::format_first_only;
+    std::regex rx( user_pattern, regex_flag );
+
+    return std::regex_search( user_string, rx, search_flag );
+}
 
 } // end of namespace k5

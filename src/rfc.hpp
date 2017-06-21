@@ -164,6 +164,34 @@ std::string substitute_all( const std::string& user_string, const std::string us
 
 void substitute_all_to( const std::string& user_string, std::string& new_user_string, const std::string user_pattern, const std::string& substitution );
 
+/*********************************************************************/
+/*                                                                   */
+/*                            match family                           */
+/*                                                                   */
+/*********************************************************************/
+
+std::vector< std::string > match( std::string user_string, const std::string& user_pattern, const std::string& flags = "o" );
+
+template< typename Container >
+void match_to( std::string user_string, std::vector< std::string >& vec_str, const std::string& user_pattern, const std::string& flags = "o" );
+
+template< typename Container >
+void match_to( std::string user_string, Container& object, const std::string& user_pattern, const std::string& flags = "o" );
+
+std::string match_at_index( const std::string& user_string, const std::string& user_pattern, int position );
+
+void match_at_index_to( const std::string& user_string, std::string& user_index, const std::string& user_pattern, int position );
+
+std::vector< std::string > match_all( std::string user_string, const std::string& user_pattern );
+
+void match_all_to( const std::string& user_string, std::vector< std::string >& vec_str, const std::string& user_pattern );
+
+template< typename Container >
+void match_all_to( const std::string& user_string, Container& object, const std::string& user_pattern );
+
+bool has_match( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o"  );
+
+
 
 } // end of namespace k5
 
