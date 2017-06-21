@@ -64,6 +64,16 @@
         match_at_index
         match_at_index_to
         has_match
+
+    get family:
+        get_prefix
+        get_prefix_to
+        get_suffix
+        get_suffix_to
+        get_prefix_of_index
+        get_prefix_of_index_to
+        get_suffix_of_index
+        get_suffix_of_index_to
 */
 
 #ifndef REGEX_FUNCTION_COLLECTION_HPP
@@ -216,7 +226,27 @@ void match_all_to( const std::string& user_string, Container& object, const std:
 
 bool has_match( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o"  );
 
+/***********************************************************************/
+/*                                                                     */
+/*                            get family                               */
+/*                                                                     */
+/***********************************************************************/
 
+std::string get_prefix( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o" );
+
+void get_prefix_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, const std::string& flags = "o" );
+
+std::string get_suffix( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o" );
+
+void get_suffix_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, const std::string& flags = "o" );
+
+std::string get_prefix_of_index( const std::string& user_string, const std::string& user_pattern, int position );
+
+void get_prefix_of_index_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, int position );
+
+std::string get_suffix_of_index( const std::string& user_string, const std::string& user_pattern, int position );
+
+void get_suffix_of_index( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, int position );
 
 } // end of namespace k5
 
