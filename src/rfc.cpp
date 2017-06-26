@@ -74,6 +74,9 @@
         get_prefix_of_index_to
         get_suffix_of_index
         get_suffix_of_index_to
+
+    count family
+        count_match
 */
 
 namespace k5 {
@@ -1114,6 +1117,38 @@ void get_suffix_of_index( const std::string& user_string, std::string& new_user_
             //break;
         }
         temp = mr.suffix().str();
+    }
+
+}
+
+/***********************************************************************/
+/*                                                                     */
+/*                           count family                              */
+/*                                                                     */
+/***********************************************************************/
+
+std::size_t count_match( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o" ){
+
+    const bool flags_has_i = flags.find( "i" ) < flags.size();
+    const bool flags_has_g = flags.find( "g" ) < flags.size();
+
+    std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
+//    std::regex_constants::match_flag_type search_flag = flags_has_g ? std::regex_constants::match_default : std::regex_constants::format_first_only;
+    std::regex rx( user_pattern, regex_flag );
+    std::match_results< std::string::const_iterator > mr;
+
+    std::size_t counter = 0;
+    std::string temp = user_string;
+    while( std::regex_search( temp, mr, rx ) ){
+        temp = mr.suffix().str();
+        ++counter;
+    }
+
+    if( flags_has_g ){
+        return counter;
+    } else {
+        if( counter >= 1 ) return 1;
+        else               return 0;
     }
 
 }

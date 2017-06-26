@@ -74,6 +74,9 @@
         get_prefix_of_index_to
         get_suffix_of_index
         get_suffix_of_index_to
+
+    count family
+        count_match
 */
 
 #ifndef REGEX_FUNCTION_COLLECTION_HPP
@@ -247,6 +250,17 @@ void get_prefix_of_index_to( const std::string& user_string, std::string& new_us
 std::string get_suffix_of_index( const std::string& user_string, const std::string& user_pattern, int position );
 
 void get_suffix_of_index( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, int position );
+
+/***********************************************************************/
+/*                                                                     */
+/*                           count family                              */
+/*                                                                     */
+/***********************************************************************/
+
+std::size_t count_match( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o" );
+
+
+
 
 } // end of namespace k5
 
