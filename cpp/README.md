@@ -3,7 +3,7 @@
 ### Cplusplus version
 
 There are more than one header file. You can use them all, one by one
-or just `include `rfc/rfc.hpp` if you have the whole directory, or if
+or just `include rfc/rfc.hpp` if you have the whole directory, or if
 not, you just need `rfc.hpp`. If you just want to use **split family**
 you can: `include `rfc/split.hpp`. Header files have been separated by
 family.
@@ -20,7 +20,7 @@ Families:
 
  ## Examples:
 
- ### valid family: for validation a pattern.
+ #### [valid family](https://github.com/k-five/RFC/blob/master/cpp/rfc/valid.hpp): for validation a pattern.
 
  ```C++
 #include <iostream>
@@ -57,4 +57,4 @@ not valid
 */
  ```
 
- ### parse family:
+ #### parse family:
