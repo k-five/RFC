@@ -1,37 +1,60 @@
 ## Regex Function Collection
 
-### Some useful functions to deal with Regular Expressions; All written by standard library.
-```C++
-#include <regex>
-#include <string>
-#include <vector>
-#include <iterator>
-#include <algorithm>
-```
+### Cplusplus version
 
-Just: `include <rfc.hpp>`
+There are more than one header file. You can use them all, one by one
+or just `include `rfc/rfc.hpp` if you have the whole directory, or if
+not, you just need `rfc.hpp`. If you just want to use **split family**
+you can: `include `rfc/split.hpp`. Header files have been separated by
+family.
 
-### Examples:
+Families:
+ - valid
+ - parse
+ - split
+ - join
+ - substitute
+ - match
+ - get
+ - count
 
-#### regex_is_valid:
-```C++
+ ## Examples:
+
+ ### valid family: for validation a pattern.
+
+ ```C++
+#include <iostream>
+#include "rfc/valid.hpp"
+
 int main(){
 
-    const char* r = k5::regex_is_valid( "/\/\/\\" ); // regex_is_valid (2)
-    if( r ){
-        std::cout << "not valid regex\n";
-        std::cout << "because: " << r << '\n';
+    /// regex_is_valid
+
+    const char* r = k5::regex_is_valid( "/\/\\" ); // returns regex_error.what() or nullptr
+    if( !r ){
+        std::cout << "okay valid\n";
     } else {
-        std::cout << "okay\n";
+        std::cout << "not valid: " << r << '\n';
     }
 
+    std::cout << std::string( 20, '-' ) << '\n';
+
+    std::string s_pat( "/\/\\" );
+    if( k5::regex_is_valid( s_pat ) ){              // returns true or false
+        std::cout << "okay valid\n";
+    } else {
+        std::cout << "not valid\n";
+    }
 
 return 0;}
 
 /* the output:
 
-not valid regex
-because: Unexpected end of regex when escaping.
+not valid: Unexpected end of regex when escaping.
+--------------------
+not valid
 
 */
-```
+ ```
+
+ ### parse family:
