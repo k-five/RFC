@@ -55,7 +55,10 @@ not valid: Unexpected end of regex when escaping.
 not valid
 
 */
- ```
+```
+
+---
+
 
  #### [parse](https://github.com/k-five/RFC/blob/master/cpp/rfc/parse.hpp) family:
 
@@ -295,3 +298,9 @@ ccc
 
 */
 ```
+
+---
+
+#### [split](https://github.com/k-five/RFC/blob/master/cpp/rfc/split.hpp)
+
+
