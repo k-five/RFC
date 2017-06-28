@@ -63,7 +63,7 @@ not valid
  - `parse_to`
 
  ```C++
- #include <iostream>
+#include <iostream>
 #include "rfc/parse.hpp"
 
 int main( int argc,const char** argv ){
@@ -92,7 +92,7 @@ return 0;}
  - `parse_all_to`
 
  ```C++
- #include <iostream>
+#include <iostream>
 #include "rfc/parse.hpp"
 
 int main( int argc,const char** argv ){
@@ -156,7 +156,7 @@ return 0;}
  - `parse_index_to`
 
  ```C++
- #include <iostream>
+#include <iostream>
 #include "rfc/parse.hpp"
 
 int main( int argc, const char** argv ){
@@ -196,7 +196,7 @@ return 0;}
  - `parse_index_all_to`
 
  ```C++
- #include <iostream>
+#include <iostream>
 #include "rfc/parse.hpp"
 
 int main( int argc, const char** argv ){
@@ -241,3 +241,57 @@ d
 */
 
  ```
+ - `parse_option`
+ - `parse_option_to`
+ - `parse_option_all`
+ - `parse_option_all_to`
+
+ ```C++
+#include <iostream>
+#include "rfc/parse.hpp"
+
+int main( int argc, const char** argv ){
+
+    /// parse_option        acts like parse_index, except looking for an argument by getting a string, and return a single string
+    const std::string s = k5::parse_option( argv, "--three" );
+    std::cout << s << '\n';
+
+    /// parse_option_to     like above, but is is void
+
+    std::puts( "----------------------" );
+    /// parse_option_all    like above, but return a vector of string for all part of that option
+    std::vector< std::string > vs = k5::parse_option_all( argv, "--three" );
+    for( const auto& s : vs ){
+        std::cout << s << '\n';
+    }
+
+    /// parse_option_all_to like above, but it is void
+
+return 0;}
+
+/* the output:
+
+ ideas $  # there is not --three, so there would not be any output
+ ideas $  ./temp -one a --two a b three aaa bbb ccc ----four a b c d
+
+----------------------
+
+ ideas $
+ ideas $  ./temp -one a --two a b --three aaa bbb ccc ----four a b c d
+--three aaa bbb ccc
+----------------------
+--three
+aaa
+bbb
+ccc
+ ideas $  ./temp -one a --two a b --three 1 2 3 ----four a b c d
+--three 1 2 3
+----------------------
+--three
+1
+2
+3
+ ideas $
+
+*/
+```
