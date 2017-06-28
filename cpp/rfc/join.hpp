@@ -95,7 +95,7 @@ namespace k5{
 /***********************************************************************/
 
 template< typename Container >
-std::string join( const Container& object, const std::string& glue ){
+std::string join( const Container& object, const std::string& glue = " " ){
 
     std::ostringstream oss;
     for( const auto& item : object ){
@@ -107,7 +107,7 @@ std::string join( const Container& object, const std::string& glue ){
 }
 
 template< typename Container >
-void join_to( const Container& object, std::string& user_string, const std::string& glue ){
+void join_to( const Container& object, std::string& user_string, const std::string& glue = " " ){
 
     std::ostringstream oss;
     for( const auto& item : object ){
@@ -118,7 +118,7 @@ void join_to( const Container& object, std::string& user_string, const std::stri
 }
 
 template< typename Container >
-std::string join( Container first, Container last,const std::string& glue ){
+std::string join( Container first, Container last,const std::string& glue = " " ){
 
     std::ostringstream oss;
     while( first != last ){
@@ -132,7 +132,7 @@ std::string join( Container first, Container last,const std::string& glue ){
 }
 
 template< typename Container >
-void join_to( Container first, Container last, std::string& user_string, const std::string& glue ){
+void join_to( Container first, Container last, std::string& user_string, const std::string& glue  = " " ){
 
     std::ostringstream oss;
     while( first != last ){
