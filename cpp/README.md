@@ -361,4 +361,46 @@ it is not the size of the dog in the fight...
 */
 ```
 
+---
+
+
+#### [join](https://github.com/k-five/RFC/blob/master/cpp/rfc/join.hpp) family
+
+```C++
+#include <iostream>
+#include <list>
+#include "rfc/join.hpp"
+
+int main(){
+
+    typedef std::vector< int > vofi;
+    typedef std::list< int >   lofi;
+
+    vofi vi{ 1,2,3,4,5 };
+    lofi li{ -1,-2,-3,-4,-5 };
+
+    /// join        returns a single string
+    std::cout << k5::join( vi )        << '\n';                     // glue by default " "
+    std::cout << k5::join( vi, " + " ) << '\n';                     // the glue is " + "
+    std::cout << k5::join( vi.begin(), vi.begin() + 3 ) << '\n';    // with iterator
+
+    /// join_to     like above, but void
+    std::string r;
+    k5::join_to( li, r, " : " );
+    std::cout << r << '\n';
+
+
+return 0;}
+
+/* the output:
+
+1 2 3 4 5
+1 + 2 + 3 + 4 + 5
+1 2 3
+-1 : -2 : -3 : -4 : -5
+
+*/
+```
+
+
 
