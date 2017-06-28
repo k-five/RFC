@@ -59,8 +59,8 @@ not valid
 
  #### [parse](https://github.com/k-five/RFC/blob/master/cpp/rfc/parse.hpp) family:
 
- `parse`
- `parse_to`
+ - `parse`
+ - `parse_to`
 
  ```C++
  #include <iostream>
@@ -83,6 +83,72 @@ return 0;}
  ideas   ./temp one two three
 ./temp one two three
 ./temp one two three
+
+*/
+ ```
+
+ - `parse_count`
+ - `parse_all`
+ - `parse_all_to`
+
+ ```C++
+ #include <iostream>
+#include "rfc/parse.hpp"
+
+int main( int argc,const char** argv ){
+
+    /// parse_count: counts the number argument with - or -- (= single dash or double dash)
+    std::cout << k5::parse_count( argv ) << '\n';
+
+    std::puts( "----------------\n" );
+    /// parse_all:   returns a vector of string of all main argument that have - or --
+    for( const std::string& s : k5::parse_all( argv ) ){
+        std::cout << s << '\n';
+    }
+
+    std::puts( "----------------\n" );
+    /// parse_all_to: acts like parse_all but it is void
+    std::vector< std::string > vs;
+    k5::parse_all_to( argv, vs );
+    for( const std::string& s : vs ){
+        std::cout << s << '\n';
+    }
+
+return 0;}
+
+/* the output:
+
+ ideas   ./temp one two three
+0
+----------------
+
+----------------
+
+ ideas   ./temp -one --two ---three
+3
+----------------
+
+-one
+--two
+--three
+----------------
+
+-one
+--two
+--three
+ ideas   ./temp -one a --two a b ---three a b c
+3
+----------------
+
+-one a
+--two a b
+--three a b c
+----------------
+
+-one a
+--two a b
+--three a b c
+
 
 */
  ```
