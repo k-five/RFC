@@ -152,3 +152,42 @@ return 0;}
 
 */
  ```
+ - `parse_index`
+ - `parse_index_to`
+
+ ```C++
+ #include <iostream>
+#include "rfc/parse.hpp"
+
+int main( int argc, const char** argv ){
+
+    /// parse_index:        parse a specific argument, returns a single string
+    std::cout << k5::parse_index( argv, 2 ) << '\n';
+
+    std::puts( "---------------------------" );
+    /// parse_index_to      like above,but is is void
+    std::string main_arg_index_2;
+    k5::parse_index_to( argv, main_arg_index_2, 2 );
+    std::cout << main_arg_index_2 << '\n';
+
+    // note:
+    // index 0: -one a
+    // index 1: --two a b
+    // index 2: --three a b c
+    // index 3: --three a b c d
+
+return 0;}
+
+/* the output:
+
+ ideas $  ./temp -one a --two a b ---three a b c
+--three a b c
+---------------------------
+--three a b c
+ ideas $  ./temp -one a --two a b ---three a b c ----four a b c d
+--three a b c
+---------------------------
+--three a b c
+
+*/
+ ```
