@@ -3,9 +3,9 @@
 ### Cplusplus version
 
 There are more than one header file. You can use them all, one by one
-or just `include rfc/rfc.hpp` if you have the whole directory, or if
+or just `include "rfc/rfc.hpp"` if you have the whole directory, or if
 not, you just need `rfc.hpp`. If you just want to use **split family**
-you can: `include `rfc/split.hpp`. Header files have been separated by
+you can: `include "rfc/split.hpp"`. Header files have been separated by
 family.
 
 Families:
@@ -57,4 +57,32 @@ not valid
 */
  ```
 
- #### parse family:
+ #### [parse]() family:
+
+ `parse`
+ `parse_to`
+
+ ```C++
+ #include <iostream>
+#include "rfc/parse.hpp"
+
+int main( int argc,const char** argv ){
+
+    /// parse
+    std::cout << k5::parse( argv ) << '\n'; // returns a single string of all main argument
+
+    /// parse_to
+    std::string main_arg;
+    k5::parse_to( argv, main_arg );         // void
+    std::cout << main_arg << '\n';
+
+return 0;}
+
+/* the output:
+
+ ideas   ./temp one two three
+./temp one two three
+./temp one two three
+
+*/
+ ```
