@@ -191,3 +191,53 @@ return 0;}
 
 */
  ```
+
+ - `parse_index_all`
+ - `parse_index_all_to`
+
+ ```C++
+ #include <iostream>
+#include "rfc/parse.hpp"
+
+int main( int argc, const char** argv ){
+
+    /// parse_index_all     parse a specific argument, but returns a vector of string of all its options
+    for( const std::string& s : k5::parse_index_all( argv, 2 ) ){
+        std::cout << s << '\n';
+    }
+
+    /// parse_index_all_to  like above, but it is void
+    // std::vector< std::string > vs;
+    // k5::parse_index_all_to( argv, vs, 2 );
+
+return 0;}
+
+/* the output:
+
+ ideas $  ./temp -one a --two a b ---three a b c ----four a b c d
+--three
+a
+b
+c
+ ideas $  ./temp -one a --two a b ---three aaa bbb ccc ----four a b c d
+--three
+aaa
+bbb
+ccc
+ ideas $  ./temp -one a --two a b -three aaa bbb ccc ----four a b c d
+-three
+aaa
+bbb
+ccc
+ ideas $  ./temp -one a --two a b three aaa bbb ccc ----four a b c d
+--four
+a
+b
+c
+d
+ ideas $
+
+
+*/
+
+ ```
