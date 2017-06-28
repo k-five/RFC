@@ -301,6 +301,64 @@ ccc
 
 ---
 
-#### [split](https://github.com/k-five/RFC/blob/master/cpp/rfc/split.hpp)
+#### [split](https://github.com/k-five/RFC/blob/master/cpp/rfc/split.hpp) family
+
+- `split`
+- `split_to`
+
+```C++
+#include <iostream>
+#include <list>
+#include "rfc/split.hpp"
+
+int main(){
+
+    /// split   splits a string to a vector of string or other valid containers
+
+    const std::string str( "first second third fourth fifth" );
+    for( const std::string& s : k5::split( str ) ){  // delimiter by default is "\\s+"
+        std::cout << s << '\n';
+    }
+
+    std::puts( "--------------------------" );
+    typedef std::list< std::string > lofs;                  // list of string
+
+    for( const std::string& s : k5::split< lofs >( str ) ){  // delimiter by default is "\\s+"
+        std::cout << s << '\n';
+    }
+
+    // note
+    // you can use any other delimiters
+
+    std::puts( "--------------------------" );
+    /// split_to    acts like above, but is is void
+    lofs ls;
+    std::string str2( "it#is#not#the#size###of#####the###dog##in#the#fight..." );
+    k5::split_to( str2, ls, "#+" );
+    for( const std::string& s : ls ){
+        std::cout << s << ' ';
+    }
+
+
+return 0;}
+
+/* the output:
+
+first
+second
+third
+fourth
+fifth
+--------------------------
+first
+second
+third
+fourth
+fifth
+--------------------------
+it is not the size of the dog in the fight...
+
+*/
+```
 
 
