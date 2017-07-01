@@ -1,12 +1,19 @@
 body{
     font-family: 'Josefin Slab', serif;
     /* background-color: #eee; */
-    font-size: xx-large;
-    margin: 0px;
+    margin: 0;
 }
-main{
+.main{
 	width: 750px;
 	height: 100%;
-	border: 1px #fff solid;
-	margin: auto;
+	border: 1px #000 solid;
+	text-indent: 20px;
+	padding: 10px;
+	margin: 20px auto auto auto;
+	text-align: justify;
+	border-radius: 10px;
+
+}
+h1{
+	color: red;
 }
