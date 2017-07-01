@@ -1,0 +1,12 @@
+body{
+    font-family: 'Josefin Slab', serif;
+    /* background-color: #eee; */
+    font-size: xx-large;
+    margin: 0px;
+}
+main{
+	width: 750px;
+	height: 100%;
+	border: 1px #fff solid;
+	margin: auto;
+}
