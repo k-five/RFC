@@ -1,29 +1,62 @@
-body{
+html{
     font-family: 'Josefin Slab', serif;
     /* background-color: #eee; */
     margin: 0;
-    background-color: #eee;
-}
-.main{
-	width: 800px;
-	height: 100%;
-	/*border: 1px #000 solid;*/
-	box-shadow: 0 2px 4px gray;
-	background-color: #fff;
-	padding: 30px;
-	margin: 20px auto auto auto;
-	text-align: justify;
-	border-radius: 10px;
-
-}
-h1{
-	color: red;
-}
-.rs{
-	visibility: hidden;
+    background-color: #444;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
 }
 
-.copyright{
+header{
+	width: 1040px;
 	text-align: center;
-	margin: 10px;
+	margin: 10px auto;
+	
+}
+header a{
+	border: 1px #fff solid;
+	border-radius: 10px;
+	padding: 40px;
+	color: #f00;
+	letter-spacing: 5px;
+	display: block;
+}
+header a:hover{
+	color: #f00;
+}
+
+
+
+main{
+	width: 1000px;
+	height: 490px;
+	border: 1px #fff solid;
+	border-radius: 10px;
+	margin: auto;
+	text-align: justify;
+	padding: 20px;
+	overflow-y: scroll;
+}
+main p,a{
+	font-size: x-large;
+	letter-spacing: 1px;
+}
+ul{
+	list-style-type: none;
+
+}
+a{
+	text-decoration: none;
+	color: #0f0;
+}
+a:hover{
+	color: #f0f;
+}
+footer{
+	margin: 7px auto;
+	text-align: center;
+	letter-spacing: 5px;
 }
