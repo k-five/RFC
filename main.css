@@ -2,13 +2,15 @@ body{
     font-family: 'Josefin Slab', serif;
     /* background-color: #eee; */
     margin: 0;
+    background-color: #eee;
 }
 .main{
-	width: 750px;
+	width: 800px;
 	height: 100%;
-	border: 1px #000 solid;
-	text-indent: 20px;
-	padding: 10px;
+	/*border: 1px #000 solid;*/
+	box-shadow: 0 2px 4px gray;
+	background-color: #fff;
+	padding: 30px;
 	margin: 20px auto auto auto;
 	text-align: justify;
 	border-radius: 10px;
@@ -16,4 +18,12 @@ body{
 }
 h1{
 	color: red;
+}
+.rs{
+	visibility: hidden;
+}
+
+.copyright{
+	text-align: center;
+	margin: 10px;
 }
