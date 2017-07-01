@@ -1,3 +1,3 @@
 ## Regex Function Collection
 
-## [Home page](https://rawgit.com/k-five/RFC/master/index.html)
+## [Please visit](https://k-five.github.io/RFC/)
