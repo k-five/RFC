@@ -44,6 +44,9 @@ main p,a{
 	font-size: x-large;
 	letter-spacing: 1px;
 }
+main strong{
+	color: #ff0;
+}
 ul{
 	list-style-type: none;
 
@@ -59,4 +62,7 @@ footer{
 	margin: 7px auto;
 	text-align: center;
 	letter-spacing: 5px;
+}
+.rs{
+	visibility: hidden;
 }
