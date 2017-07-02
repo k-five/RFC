@@ -259,7 +259,7 @@ std::string get_suffix_of_index( const std::string& user_string, const std::stri
     return user_string;
 }
 
-void get_suffix_of_index( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, int position ){
+void get_suffix_of_index_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, int position ){
 
     std::regex rx( user_pattern, std::regex_constants::icase );
     std::match_results< std::string::const_iterator > mr;
@@ -281,7 +281,7 @@ void get_suffix_of_index( const std::string& user_string, std::string& new_user_
             if( mr.str() != "" ){
                 new_user_string = mr.suffix().str();
             }
-            //break;
+            break;
         }
         temp = mr.suffix().str();
     }
