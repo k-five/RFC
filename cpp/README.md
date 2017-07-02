@@ -528,6 +528,68 @@ true
 */
 ```
 
+---
+
+#### [get]() family
+
+- `get_prefix`
+- `get_prefix_to`
+- `get_suffix`
+- `get_suffix_to`
+- `get_prefix_of_index`
+- `get_prefix_of_index_to`
+- `get_suffix_of_index`
+- `get_suffix_of_index_to`
+
+```C++
+#include <iostream>
+#include "rfc/get.hpp"
+
+
+int main(){
+
+    const char* const nl2 = "\n\n";
+
+    ///get_prefix
+    std::string str( "How are you today? I am fine, how about you?" );
+    std::cout << k5::get_prefix( str, "\\?" ) << nl2;
+
+    ///get_prefix_to
+
+    ///get_suffix
+    std::cout << k5::get_suffix( str, "\\?" ) << nl2;
+
+    ///get_suffix_to
+
+    ///get_prefix_of_index
+    str += " fine, too. Do you have $1 million dollars?";
+    std::cout << k5::get_prefix_of_index( str, "\\?", 1 ) << nl2;
+
+    ///get_prefix_of_index_to
+
+    ///get_suffix_of_index
+    std::cout << k5::get_suffix_of_index( str, "\\?", 1 ) << nl2;
+
+    ///get_suffix_of_index_to
+
+
+return 0;}
+
+/* the output:
+
+How are you today
+
+ I am fine, how about you?
+
+How are you today?
+
+ fine, too. Do you have $1 million dollars?
+
+
+*/
+
+```
+
 
 
 
