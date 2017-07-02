@@ -188,7 +188,7 @@ std::string get_prefix_of_index( const std::string& user_string, const std::stri
             if( mr.str() != "" ){
                 return the_prefix;
             }
-            //break;
+            break;
         }
 
         the_prefix += mr.prefix().str() + mr.str();
@@ -221,7 +221,7 @@ void get_prefix_of_index_to( const std::string& user_string, std::string& new_us
             if( mr.str() != "" ){
                 new_user_string = the_prefix;
             }
-            //break;
+            break;
         }
 
         the_prefix += mr.prefix().str() + mr.str();
@@ -251,7 +251,7 @@ std::string get_suffix_of_index( const std::string& user_string, const std::stri
             if( mr.str() != "" ){
                 return mr.suffix().str();
             }
-            //break;
+            break;
         }
         temp = mr.suffix().str();
     }
