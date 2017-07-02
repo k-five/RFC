@@ -366,6 +366,9 @@ it is not the size of the dog in the fight...
 
 #### [join](https://github.com/k-five/RFC/blob/master/cpp/rfc/join.hpp) family
 
+- `join`
+- `join_to`
+
 ```C++
 #include <iostream>
 #include <list>
@@ -401,6 +404,58 @@ return 0;}
 
 */
 ```
+
+#### [substitute]() family
+
+- `substitute`
+- `substitute_to`
+- `substitute_all`
+- `substitute_all_to`
+- `substitute_at_index`
+- `substitute_at_index_to`
+
+```C++
+#include <iostream>
+#include "rfc/substitute.hpp"
+
+int main(){
+
+
+    /// substitute                  returns a modified string
+    std::string str( "first SECOND third fourth fifth" );
+    std::cout << k5::substitute( str, "[a-z]+", "---" ) << "\n\n";
+
+    /// substitute_to               like substitute but it is void
+    std::string temp;
+    k5::substitute_to( str, temp, "SECOND", "###" );
+    std::cout << temp << "\n\n";
+
+    /// substitute_all              like substitute but by default is has 'g' flag and 'i' flag
+    std::cout << k5::substitute_all( str, "[a-z]+", "---" ) << "\n\n";
+
+    /// substitute_all_to           like substitute_all but it is void
+
+    /// substitute_at_index         like substitute by with a specific index
+    std::cout << k5::substitute_at_index( str, "[a-z]+", "###", 1 ) << "\n\n";
+
+    /// substitute_at_index_to      like above, but it is void
+
+
+return 0;}
+
+/* the output:
+
+--- SECOND third fourth fifth
+
+first ### third fourth fifth
+
+--- --- --- --- ---
+
+first SECOND ### fourth fifth
+
+*/
+
+``
 
 
 
