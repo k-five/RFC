@@ -408,7 +408,7 @@ return 0;}
 ---
 
 
-#### [substitute]() family
+#### [substitute](https://github.com/k-five/RFC/blob/master/cpp/rfc/substitute.hpp) family
 
 - `substitute`
 - `substitute_to`
@@ -458,12 +458,12 @@ first SECOND ### fourth fifth
 
 */
 
-``
+```
 
 ---
 
 
-#### [match]() family
+#### [match](https://github.com/k-five/RFC/blob/master/cpp/rfc/match.hpp) family
 
 - `match`
 - `match_to`
@@ -530,7 +530,7 @@ true
 
 ---
 
-#### [get]() family
+#### [get](https://github.com/k-five/RFC/blob/master/cpp/rfc/get.hpp) family
 
 - `get_prefix`
 - `get_prefix_to`
@@ -592,7 +592,7 @@ How are you today?
 
 ---
 
-#### [count]() family
+#### [count](https://github.com/k-five/RFC/blob/master/cpp/rfc/count.hpp) family
 
 - `count_match`
 
