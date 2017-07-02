@@ -253,7 +253,7 @@ void match_all_to( const std::string& user_string, Container& object, const std:
 bool has_match( const std::string& user_string, const std::string& user_pattern, const std::string& flags = "o"  ){
 
     const bool flags_has_i = flags.find( "i" ) < flags.size();
-    const bool flags_has_g = flags.find( "g" ) < flags.size();
+//    const bool flags_has_g = flags.find( "g" ) < flags.size();
     std::vector< std::string > vec_str;
 
     std::regex::flag_type regex_flag                  = flags_has_i ? std::regex_constants::icase         : std::regex_constants::ECMAScript;
