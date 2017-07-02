@@ -405,6 +405,9 @@ return 0;}
 */
 ```
 
+---
+
+
 #### [substitute]() family
 
 - `substitute`
@@ -456,6 +459,75 @@ first SECOND ### fourth fifth
 */
 
 ``
+
+---
+
+
+#### [match]() family
+
+- `match`
+- `match_to`
+- `match_all`
+- `match_all_to`
+- `match_at_index`
+- `match_at_index_to`
+- `has_match`
+
+```C++
+#include <iostream>
+#include "rfc/match.hpp"
+
+int main(){
+
+    const char* const nl2 = "\n\n";
+
+    /// match   returns a vector of string
+    std::string str( "first second 3333.3333 fourth 5555.5555" );
+    for( const std::string& s :  k5::match( str, "\\d+" ) ){
+        std::cout << s << ' ';
+    }
+    std::cout << '\n';
+    for( const std::string& s :  k5::match( str, "\\d+", "g" ) ){
+        std::cout << s << ' ';
+    }
+    std::cout << nl2;
+
+    /// match_to
+
+    /// match_all
+
+    /// match_all_to
+    std::vector< std::string > vs;
+    k5::match_all_to( str, vs, "[a-z]+" );
+    for( const auto& s : vs ){
+        std::cout << s << ' ';
+    }
+    std::cout << nl2;
+
+    /// match_at_index
+    std::cout << k5::match_at_index( str, "\\d+", -1 ) << '\n';
+
+    /// match_at_index_to
+
+    /// has_match
+    std::cout << std::boolalpha << k5::has_match( str, "\\d+" ) << '\n';
+
+
+return 0;}
+
+/* the output:
+
+3333
+3333 3333 5555 5555
+
+first second fourth
+
+5555
+true
+
+*/
+```
+
 
 
 
