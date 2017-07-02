@@ -590,6 +590,39 @@ How are you today?
 
 ```
 
+---
 
+#### [count]() family
+
+- `count_match`
+
+```C++
+#include <iostream>
+#include "RFC/cpp/rfc/count.hpp"
+
+
+int main(){
+
+    /// count_match
+    const char* cstring = "ONE TWO THREE four five six seven";
+    std::cout << k5::count_match( cstring, "[a-z]+" ) << "\n\n";
+
+    std::cout << k5::count_match( cstring, "[a-z]+", "g" ) << "\n\n";
+
+    std::cout << k5::count_match( cstring, "[a-z]+", "gi" ) << "\n\n";
+
+
+return 0;}
+
+/* the output:
+
+1
+
+4
+
+7
+
+*/
+```
 
 
