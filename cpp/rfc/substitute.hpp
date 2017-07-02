@@ -93,7 +93,7 @@ namespace k5{
 /*                                                                     */
 /***********************************************************************/
 
-std::string substitute( const std::string& user_string, const std::string& user_pattern, const std::string& substitution, const std::string& flags ){
+std::string substitute( const std::string& user_string, const std::string& user_pattern, const std::string& substitution, const std::string& flags = "o" ){
 
     bool flags_has_i = flags.find( "i" ) < flags.size();
     bool flags_has_g = flags.find( "g" ) < flags.size();
@@ -106,7 +106,7 @@ std::string substitute( const std::string& user_string, const std::string& user_
     return std::regex_replace( user_string, rx, substitution, search_flag );
 }
 
-void substitute_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, const std::string& substitution, const std::string& flags){
+void substitute_to( const std::string& user_string, std::string& new_user_string, const std::string& user_pattern, const std::string& substitution, const std::string& flags = "o" ){
 
     bool flags_has_i = flags.find( "i" ) < flags.size();
     bool flags_has_g = flags.find( "g" ) < flags.size();
