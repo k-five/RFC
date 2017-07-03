@@ -21,60 +21,6 @@
 
     =======================================
 
-    content:
-
-    valid family:
-        regex_is_valid (1)
-        regex_is_valid (2)
-
-    parse family:
-        parse
-        parse_to
-        parse_count
-        parse_index
-        parse_index_to
-        parse_index_all
-        parse_index_all_to
-        parse_option
-        parse_option_to
-        parse_option_all
-        parse_option_all_to
-
-    split family:
-        split
-        split_to
-
-    join family:
-        join
-        join_to
-
-    substitute family:
-        substitute
-        substitute_to
-        substitute_all
-        substitute_all_to
-        substitute_at_index
-        substitute_at_index_to
-
-    match family:
-        match
-        match_to
-        match_all
-        match_all_to
-        match_at_index
-        match_at_index_to
-        has_match
-
-    get family:
-        get_prefix
-        get_prefix_to
-        get_suffix
-        get_suffix_to
-        get_prefix_of_index
-        get_prefix_of_index_to
-        get_suffix_of_index
-        get_suffix_of_index_to
-
     count family
         count_match
 */
