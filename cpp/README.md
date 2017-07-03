@@ -625,4 +625,35 @@ return 0;}
 */
 ```
 
+---
+
+#### [misc](https://github.com/k-five/RFC/blob/master/cpp/rfc/misc.hpp) family
+
+- `fold`
+
+```C++
+#include <iostream>
+#include "rfc/misc.hpp"
+
+
+int main(){
+
+    /// fold        returns a pair of string, in fact return the prefix and the suffix of the match
+    std::string str( "the first part 123456789 the second part" );
+    const auto p = k5::fold( str, "\\d+" );
+    std::cout << p.first << '\n' << p.second << '\n';
+
+    // first:  'the first part '
+    // second: ' the second part'
+
+return 0;}
+
+/* the output:
+
+the first part
+ the second part
+
+*/
+
+```
 
