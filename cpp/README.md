@@ -657,3 +657,39 @@ the first part
 
 ```
 
+- `auto-zero-leading`
+
+```C++
+#include <iostream>
+#include "rfc/misc.hpp"
+
+
+int main(){
+
+    k5::auto_zero_leading azl( 2, " " );    // initialize the object
+
+    short counter = 13;
+    while( counter-- ){
+        std::cout << azl << "a simple test for auto-zero-leading\n";
+    }
+
+return 0;}
+
+/* the output:
+
+001 a simple test for auto-zero-leading
+002 a simple test for auto-zero-leading
+003 a simple test for auto-zero-leading
+004 a simple test for auto-zero-leading
+005 a simple test for auto-zero-leading
+006 a simple test for auto-zero-leading
+007 a simple test for auto-zero-leading
+008 a simple test for auto-zero-leading
+009 a simple test for auto-zero-leading
+010 a simple test for auto-zero-leading
+011 a simple test for auto-zero-leading
+012 a simple test for auto-zero-leading
+013 a simple test for auto-zero-leading
+
+*/
+```
